@@ -13,4 +13,4 @@ def read_item(item_id: int, q: str = None):
 
 @app.get("/api/ip")
 def get_ip(request: Request):
-    return Response(content=f"<h1>{request.client.host}</h1>", media_type"text/html")
+    return { "ID": request.client.host}
