@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
@@ -14,3 +15,7 @@ def read_item(item_id: int, q: str = None):
 @app.get("/api/ip")
 def get_ip(request: Request):
     return { "ID": request.client.host}
+
+@app.get("/ip")
+def get_ip(request: Request):
+    return f"<h1>din ip är: {request.clinet.host}</h1>"
