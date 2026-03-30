@@ -19,3 +19,7 @@ def get_ip(request: Request):
 @app.get("/ip")
 def get_ip(request: Request):
     return f"<h1>din ip är: {request.clinet.host}</h1>"
+
+@app.get("/rooms")
+def get_rooms():
+    return ["room1":{"beds":2},"room2":{"beds":3},"room3":{"beds":2}]
