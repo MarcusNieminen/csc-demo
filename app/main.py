@@ -22,4 +22,4 @@ def get_ip(request: Request):
 
 @app.get("/rooms")
 def get_rooms():
-    return {"hotel1":["room1":{"beds":2},"room2":{"beds":3},"room3":{"beds":2}]}
+    return [{"room":1,"beds":3},{"room":2,"beds":2},{"room":3,"beds":4}]
