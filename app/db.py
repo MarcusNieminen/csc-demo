@@ -11,25 +11,13 @@ def create_schema():
         with get_conn() as conn, conn.cursor() as cur:
             # Create the schema
             cur.execute("""
-                -- sample parent table
-                CREATE TABLE IF NOT EXISTS foo (
+                CREATE TABLE IF NOT EXISTS hotel_rooms (
                     id SERIAL PRIMARY KEY, -- primary key
+                    room_number INT
+                    type VARCHAR
+                    price NUMERIC 
                     created_at TIMESTAMP DEFAULT now()
                 );
-                
-                -- sample child table
-                CREATE TABLE IF NOT EXISTS bar (
-                    id SERIAL PRIMARY KEY,
-                    foo_id INT REFERENCES foo(id), -- foreign key
-                    created_at TIMESTAMP DEFAULT now()
-                );
-
-                -- adding columns after the fact
-                ALTER TABLE foo ADD COLUMN IF NOT EXISTS name VARCHAR;
-                ALTER TABLE foo ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT now()""")
-            
-            # insert sample data
-            cur.execute("""INSERT INTO foo (name) VALUES ('test')""")
-
+            )
     except Exception as e:
         print(f"Error while creating schema: {e}")
